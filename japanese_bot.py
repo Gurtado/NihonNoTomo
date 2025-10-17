@@ -2,7 +2,7 @@ import logging
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
-import pandas as pd
+#import pandas as pd
 from openpyxl import load_workbook
 import os
 
@@ -741,3 +741,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
