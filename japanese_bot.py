@@ -3,7 +3,7 @@ from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
 
 #import pandas as pd
-from openpyxl import load_workbook
+#from openpyxl import load_workbook
 import os
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
@@ -741,4 +741,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
