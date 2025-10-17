@@ -427,7 +427,7 @@ async def add_word_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         📖 **Только чтение** (2 части):  
         `/addword こんにちは|привет`
 
-        Разделители: | / \ ｜
+        Разделители: | / \\ ｜
         """
         await update.message.reply_text(help_text)
         return
@@ -741,5 +741,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
