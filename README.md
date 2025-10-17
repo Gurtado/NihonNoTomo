@@ -1,0 +1,2 @@
+# NihonNoTomo
+NihonNoTomo bot
