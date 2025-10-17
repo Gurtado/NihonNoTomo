@@ -737,10 +737,11 @@ def main():
     
     # Запускаем бота
     logger.info("Бот запускается...")
-    application.run_polling(drop_pending_updates=True)
+    application.run_polling()
 
 if __name__ == "__main__":
     main()
+
 
 
 
