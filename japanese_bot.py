@@ -187,7 +187,9 @@ def downgrade_level(current_level):
     return levels.get(current_level, 'A')
 
 def save_all_stats_to_db(stats_updates):
+    print(f"DEBUG: Получено {len(stats_updates)} обновлений статистики")
     if not stats_updates:
+        print("DEBUG: Нет обновлений для сохранения!")
         return
 
     try:
@@ -202,6 +204,8 @@ def save_all_stats_to_db(stats_updates):
 
             stat_type = 'kanji' if word_type in ['kanji', 'vocab_kanji'] else 'reading'
             updated_stats = update['updated_stats']
+            print(f"DEBUG: Сохраняю слово {word_id}, тип {stat_type}")
+            print(f"DEBUG: Новые данные: {updated_stats}")
 
             # Удаляем старую и вставляем новую
             cursor.execute('''DELETE
@@ -213,6 +217,7 @@ def save_all_stats_to_db(stats_updates):
                   (word_id, stat_type, updated_stats['level'], updated_stats['count'], current_date))
 
         conn.commit()
+        print("DEBUG: Статистика успешно сохранена в БД")
         conn.close()
         print(f"Сохранено {len(stats_updates)} обновлений статистики")
         
@@ -327,8 +332,10 @@ async def ask_question(update_or_query, context: ContextTypes.DEFAULT_TYPE):
 
        
         if (index >= len(words)) or (time_left <= 0):
+            print("DEBUG: Завершение тренировки, сохраняю статистику...")
             #запись статистики за сессию
             if context.user_data.get('stats_updates'):
+                print(f"DEBUG: Есть {len(context.user_data['stats_updates'])} обновлений")
                 save_all_stats_to_db(context.user_data['stats_updates'])
             
             reason = "🌚 Время вышло!" if (time_left <= 0) else "😭 Слова закончились"
@@ -741,6 +748,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
 
